@@ -1,0 +1,63 @@
+
+#btnSearch{
+float: right;
+}
+#rounded{
+
+  opacity: 0.9;
+  border-radius: 10px;
+  margin-bottom: 3%;
+  margin-top: 3%;
+}
+#rounded:hover{
+    opacity: 1;
+  cursor: pointer;
+}
+#rounded a{
+
+}
+#rounded a:hover{
+text-decoration: none;
+}
+
+
+#cname{
+    overflow: hidden;
+}
+
+
+.padding-0 {
+    padding: 0;
+}
+
+.ShowFilter{
+  visibility: visible;
+}
+
+#advanced:hover{
+     text-decoration: underline;
+     color: blue;
+        cursor:pointer;
+        }
+
+#myfilter  {
+  display: block;
+    float: left; padding-left: 22px;
+   margin: auto;
+}
+.img-responsive {
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+.navbar-header,.nav > li > a{
+  padding-top:1px;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  border-top: 1px solid #d0d0d0;
+   background:  #e6f2ff;
+  box-shadow: 0 2px 2px 0  #ffffff, 0 15px 3px 0  #cce6ff
+;   padding-top:0;
+   text-decoration: none; /*Change rollover cell color here*/
+}
