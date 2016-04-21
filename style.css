@@ -1,30 +1,61 @@
-
 #btnSearch{
 float: right;
+width: 20%;
+white-space: normal !important;
+ font-size:normal;
+ }
+ #detailsTitle{   text-align: center;
+   display: inline-block;
+ margin:0 auto;
+ float: none;
+ width: 100%;
+ border: grey 1px solid;
 }
-#rounded{
 
-  opacity: 0.9;
-  border-radius: 10px;
-  margin-bottom: 3%;
-  margin-top: 3%;
+#detailsLeft{
+    float:right;
+    text-align: right;
+    width:100%;
+    margin: 5%;
+  }
+
+#modules{
 }
+
+#overview{
+  text-align: left;
+
+}
+ .container-fluid {
+   padding-right: 15px;
+   padding-left: 15px;
+
+ }
+#rounded{
+  opacity: 0.9;   padding-left: 25px;
+
+
+  margin-top: 2%;
+  border-radius: 10px;
+ }
+
 #rounded:hover{
     opacity: 1;
   cursor: pointer;
 }
-#rounded a{
 
+#rounded a{
 }
+
 #rounded a:hover{
 text-decoration: none;
 }
 
-
 #cname{
     overflow: hidden;
+    width: 80%;
+    height:35px
 }
-
 
 .padding-0 {
     padding: 0;
@@ -34,17 +65,22 @@ text-decoration: none;
   visibility: visible;
 }
 
+
 #advanced:hover{
-     text-decoration: underline;
-     color: blue;
-        cursor:pointer;
-        }
+   text-decoration: underline;
+   color: blue;
+   cursor:pointer;
+  }
 
 #myfilter  {
-  display: block;
-    float: left; padding-left: 22px;
-   margin: auto;
 }
+.filter{
+  vertical-align:bottom;
+  float: left;
+  margin: auto;
+  width:20%
+}
+#p{display: none}
 .img-responsive {
     margin: 0 auto;
     opacity: 0.9;
@@ -57,7 +93,6 @@ text-decoration: none;
 .nav > li > a:hover, .nav > li > a:focus {
   border-top: 1px solid #d0d0d0;
    background:  #e6f2ff;
-  box-shadow: 0 2px 2px 0  #ffffff, 0 15px 3px 0  #cce6ff
 ;   padding-top:0;
    text-decoration: none; /*Change rollover cell color here*/
 }

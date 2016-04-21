@@ -12,21 +12,23 @@ $(function(){
 		minLength: 0
 	});
 
-	$('#btnSearch').click(function(){
-		$.getJSON('search.php',
-        {title:$('#cname').val()},
-		function(d){
-		//   $('body').append("#cname");
-		  // $('body').append(d.title);
-			 $('body').append("Hello");
-
-		});
-	});
 
 $('#advanced').click(	function(){
 	$('#myfilter').toggle();
 });
 
 
+$('#btnSearch').click(function(){
+	$('#pic').toggle();
+
 });
+
+$('#btnSearch').click( function(){
+	$('html,body').animate({
+               scrollTop: target.offset().top
+             }, 1000);
+	});
+
+});
+
  //var a = <?php echo json_encode($title); ?>;

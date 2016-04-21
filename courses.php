@@ -17,6 +17,7 @@
          <a class="navbar-brand" href="#">University</a>
             </div>
         <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.php">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
         </ul>
@@ -25,63 +26,83 @@
 
 <div class="container" >
   <div class="row">
-
   <form  class="col-lg-1 col-centered" role="search"  id="searchForm" method="post" action ="courses.php">
-        <div class="form-group  " id="searchingGroup" >
-      		<input  id="cname" type="text" name="searchInput" class="  form-control  input-lg"  size="21" maxlength="120" placeholder="Search for..." >
-  				<input id="btnSearch" name="submit" class="btn btn-info form-control" type="submit" value="search">
-        </div>
-      <div  id ="myfilter">
-      <label class="checkbox-inline"><input type="checkbox" value="">By name</label>
-      <label class="checkbox-inline"><input type="checkbox" value="">By name</label>
-      <label class="checkbox-inline"><input type="checkbox" value="">By name</label>
-      </div>
 
-      <button id ="goBack" class="btn btn-info  pull-right " onclick="history.go(-1);"> << Go back </button>
-   </form>
+    <div class="form-group  " id="searchingGroup" >
+      <input  id="cname" type="text" name="searchInput" value="<?php $text=$_POST['searchInput']; echo $text; ?>"  class=" input-lg"  size="21" maxlength="120" placeholder="Search for..." >
+      <input target="elementToTop" id="btnSearch" name="submit" class="btn btn-info btn-lg  " type="submit" value="search">
+    </div>
+    <div  id ="myfilter" >
+      <select id="f1" class="form-control filter" name ="level" form="searchForm"  >
+         <option selected value ="graduate">All levels</option>
+        <option value ="Undergraduate">Bachelor</option>
+        <option value ="Postgraduate">Master</option>
+      </select>
+
+      <select id ="f2" class="form-control filter"   name ="subject" form="searchForm" >
+        <option value ="Accounting">  Accounting  </option>
+        <option value ="Architectural technology"> Architectural technology </option>
+        <option value ="Biology">  Biology  </option>
+        <option value ="Building"> Building </option>
+         <option value ="Business">Business  </option>
+        <option value ="Careers guidance">   Careers guidance </option>
+        <option value ="Civil engineering"> Civil engineering </option>
+        <option value =" Communication and media"> Communication and media </option>
+          <option value ="Computing"> Computing </option>
+        <option value ="Creative Writing">Creative Writing   </option>
+        <option value ="Design">Design   </option>
+       <option value ="Drama">Drama   </option>
+
+         <option value ="Management">Management</option>
+        <option value ="Finance">Finance</option>
+
+        <option value ="    ">   </option>
+        <option value ="  ">   </option>
+        <option value ="    ">   </option>
+        <option value ="  ">   </option>
+        <option value ="    ">   </option>
+        <option value ="  ">   </option>
+        <option value ="    ">   </option>
+        <option value ="  ">   </option>
+        <option value ="    ">   </option>
+      </select>
+      <script type="text/javascript">
+         $("#f1").val("<?php echo $_POST['level'];?>");
+         $("#f2").val("<?php echo $_POST['subject'];?>");
+      </script>
+    </div>
+
+    </form>
   </div>
 </div>
 
 
 <?php
 
-$input = "~([A-Za-z]+)~";
-if(preg_match($input,$_POST['searchInput']))  {
-  $text=$_POST['searchInput'];
+
+ $text=$_POST['searchInput'];
+ $level=$_POST['level'];
+ $subject=$_POST['subject'];
+
+ $m = new mysqli('localhost', 'scott', 'tiger','courses');
+ if ($m->connect_errno) {
+ die('Database connection failed');
+ }
+ $m->set_charset('utf8');
+//union in queries
+// if(isset($_POST['level']))
+
+ $sql ="SELECT title,award,id,summary from course
+     WHERE  title LIKE '%" . $text . "%'  AND subject LIKE '%" . $subject . "%' AND level LIKE '%" . $level . "%'
+     LIMIT 10
+    ";
+      $result = $m->query($sql) or die($m->error);
+      $count = mysqli_num_rows($result);
 
 
 
-$m = new mysqli('localhost', 'scott', 'tiger','courses');
-if ($m->connect_errno) {
-die('Database connection failed');
-}
-$m->set_charset('utf8');
 
-//limit for 10 pages
-$num=10;
-if(!isset($_GET['page'])){
-$page = 1;} else { $page = $_GET['page'];
-}
-$start_from = ($page-1) * $num;
-$sql ="SELECT *
-FROM course
-WHERE title LIKE '%" . $text . "%'
-LIMIT $start_from, $num
-";
-$result = $m->query($sql) or die($m->error);
-$count = mysqli_num_rows($result);
-
-
-
- echo " <div class=\"container\">
-          <div class=\"row\">
-            <h4 class=\"col-md-8\">" . $count .  " results for  " . $text .   "</h4>
-          </div>
-        </div>
-        ";
-
-
-
+//displaying all courses
 while($row=mysqli_fetch_array($result)){
   $title=$row['title'];
   $award=$row['award'];
@@ -89,7 +110,7 @@ while($row=mysqli_fetch_array($result)){
   $summary=$row['summary'];
 
 			echo "
-				<div class=\"container\">
+				<div class=\"container-fluid\">
         <div id=\"rounded\"  class=\"row  bg-info\">
           <a href = 'details.php?about=$id'>
 			 		<div >  <h3>". $award . " " .  $title . "</h3> </div>
@@ -101,24 +122,11 @@ while($row=mysqli_fetch_array($result)){
 			 	 ";
 }
 
-$sql = "SELECT * FROM course WHERE title LIKE '%" . $text . "%'";
-$rs_result =  $m->query($sql); //run the query
-$total_records = mysqli_num_rows($rs_result);  //count number of records
-$total_pages = ceil($total_records / $num);
-
-// should modify from post to get to make pagination work
-  }echo "<a href='courses.php?page=1'>".'|<'."</a> "; // Goto 1st page
-
-  for ($i=1; $i<=$total_pages; $i++) {
-              echo "<a href='courses.php?page=".$i."'>".$i."</a> ";
-  };
-  echo "<a href='courses.php?page=$total_pages'>".'>|'."</a> "; // Goto last page
-
-
 
 
 
 ?>
+
 
 </body>
 </html>
