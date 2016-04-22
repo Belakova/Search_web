@@ -1,0 +1,128 @@
+#btnSearch{
+float: right;
+width: 20%;
+white-space: normal !important;
+ font-size:normal;
+ }
+ #allModules{
+   font-size: 18pt;
+   cursor: pointer;
+   text-align: center;
+
+ }
+ #allModules:hover{color: blue;}
+ .start{
+   font-weight: bold;
+ }
+.bigger{
+  display: none;
+   cursor: pointer;
+   padding: 0px 0px 0px 5px;
+  border-radius: 20px;
+  background-color: grey;
+  color: white;
+  opacity: 0.9;
+  margin: 1%;
+ }
+ .bigger:hover{  color: blue;}
+ #moreModule {
+   display: none;
+   padding: 0px 0px 0px 15px;
+   border-radius: 20px;
+   color: blue;
+   opacity: 0.9
+
+ }
+
+ #detailsTitle{   text-align: center;
+   display: inline-block;
+ margin:0 auto;
+ float: none;
+ width: 100%;
+ border: grey 1px solid;
+}
+
+#detailsLeft{
+    float:right;
+    text-align: right;
+    width:100%;
+    margin: 5%;
+  }
+
+#modules{
+}
+
+#overview{
+  text-align: left;
+
+}
+ .container-fluid {
+   padding-right: 15px;
+   padding-left: 15px;
+
+ }
+#rounded{
+  opacity: 0.9;   padding-left: 25px;
+
+
+  margin-top: 2%;
+  border-radius: 10px;
+ }
+
+#rounded:hover{
+    opacity: 1;
+  cursor: pointer;
+}
+
+#rounded a{
+}
+
+#rounded a:hover{
+text-decoration: none;
+}
+
+#cname{
+    overflow: hidden;
+    width: 80%;
+    height:35px
+}
+
+.padding-0 {
+    padding: 0;
+}
+
+.ShowFilter{
+  visibility: visible;
+}
+
+
+#advanced:hover{
+   text-decoration: underline;
+   color: blue;
+   cursor:pointer;
+  }
+
+#myfilter  {
+}
+.filter{
+  vertical-align:bottom;
+  float: left;
+  margin: auto;
+  width:20%
+}
+#p{display: none}
+.img-responsive {
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+.navbar-header,.nav > li > a{
+  padding-top:1px;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  border-top: 1px solid #d0d0d0;
+   background:  #e6f2ff;
+;   padding-top:0;
+   text-decoration: none; /*Change rollover cell color here*/
+}
