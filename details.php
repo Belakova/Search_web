@@ -14,14 +14,15 @@
   <nav class="navbar">
     <div class="container-fluid">
       <div class="navbar-header">
-         <a class="navbar-brand" href="index.php">University</a>
+         <a class="navbar-brand" href="http://socwebtech1.napier.ac.uk/~40122079/course.php">University</a>
             </div>
         <ul class="nav navbar-nav navbar-right">
-      <li><a href="index.php">Home</a></li>
+      <li><a href="http://socwebtech1.napier.ac.uk/~40122079/course.php">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
         </ul>
    </div>
+ </nav>
 
 <?php
  	 $input = "~([0-9]{5}[A-Za-z]{2})~";
